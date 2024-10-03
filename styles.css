@@ -1,0 +1,145 @@
+/* Estilo base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow-x: hidden; /* Para evitar o overflow lateral em telas pequenas */
+}
+
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #333;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 800px; /* Limita a largura máxima do container */
+    width: 90%; /* Ajusta a largura de forma flexível */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #F51524;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #F51524;
+}
+
+/* Corações animados */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #F51524;
+    clip-path: polygon(50% 0%, 61% 14%, 75% 14%, 86% 25%, 100% 50%, 50% 100%, 0% 50%, 14% 25%, 25% 14%, 39% 14%);
+    animation: float 1s ease forwards;
+}
+
+@keyframes float {
+    0% {
+        transform: scale(0.5) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translateY(-100px);
+        opacity: 0;
+    }
+}
+
+/* Media queries para telas menores (celulares) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 12px 24px;
+    }
+}
+
+/* Media queries para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 15px 28px;
+    }
+}
+
+/* Estilo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Para evitar barras de rolagem */
+}
+
+.container {
+    z-index: 1; /* Colocar o texto acima dos foguetes */
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+

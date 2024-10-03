@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que vamos fazer?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="typing-text">O que vamos fazer?</h1>
+        <div class="options">
+            <a href="#" id="ficar-btn" class="btn">Ficar em casa</a>
+            <a href="sair_para_jantar.html" id="sair-btn" class="btn">Sair de casal, rs</a>
+        </div>
+    </div>
+
+    <script>
+        function createHeart(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        // Evento para o botão "Ficar em casa"
+        document.getElementById('ficar-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            createHeart(event);
+
+            // Gera posição aleatória
+            const randomX = Math.floor(Math.random() * (window.innerWidth - this.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - this.offsetHeight));
+            
+            // Move o botão para a nova posição
+            this.style.position = 'absolute';
+            this.style.left = `${randomX}px`;
+            this.style.top = `${randomY}px`;
+        });
+
+        // Evento para o botão "Sair para jantar"
+        document.getElementById('sair-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            createHeart(event);
+
+            // Redireciona após 2 segundos
+            setTimeout(() => {
+                window.location.href = "sair_para_jantar.html";
+            }, 2000);
+        });
+
+        // Função de digitação
+        function typeWriter(text, element, delay = 80) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, delay);
+                }
+            }
+            typing();
+        }
+
+        const h1Text = document.getElementById('typing-text').textContent;
+        document.getElementById('typing-text').textContent = '';  // Limpa o texto antes de começar a digitar
+        typeWriter(h1Text, document.getElementById('typing-text'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficar em casa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="typing-text">Vamos ficar em casa e relaxar!</h1>
+        <a href="inicio.html" class="btn">Voltar</a>
+    </div>
+
+    <script>
+        function createHeart(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        document.querySelector('.btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            createHeart(event);
+            setTimeout(() => {
+                window.location.href = "inicio.html";
+            }, 2000);
+        });
+
+        // Função de digitação
+        function typeWriter(text, element, delay = 80) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, delay);
+                }
+            }
+            typing();
+        }
+
+        const h1Text = document.getElementById('typing-text').textContent;
+        document.getElementById('typing-text').textContent = '';  // Limpa o texto antes de começar a digitar
+        typeWriter(h1Text, document.getElementById('typing-text'));
+    </script>
+</body>
+</html>

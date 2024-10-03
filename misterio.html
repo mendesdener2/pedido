@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mistério</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="typing-text">Esteja pronta. Te amo!</h1>
+        <h2 id="typing-subtext">PS: Agora me dê um beijinho.</h2>
+    </div>
+
+    <script>
+        // Função de digitação
+        function typeWriter(text, element, delay = 100) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, delay);
+                }
+            }
+            typing();
+        }
+
+        // Efeito de digitação para h1 e h2
+        const h1Text = document.getElementById('typing-text').textContent;
+        document.getElementById('typing-text').textContent = '';  // Limpa o texto antes de começar a digitar
+        typeWriter(h1Text, document.getElementById('typing-text'));
+
+    </script>
+</body>
+</html>

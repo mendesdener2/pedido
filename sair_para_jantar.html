@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sair para jantar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="typing-text">Ótima escolha, rs.</h1>
+        <h2 id="typing-subtext">Vamos em um lugar especial. O que seu buchinho está mandando?</h2>
+        <br>
+        <a href="cinema.html" class="btn">Cinema</a>
+        <a href="restaurante.html" class="btn">Restaurante</a>
+    </div>
+
+    <script>
+        function createHeart(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        // Aplica o evento de clique a todos os botões
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                createHeart(event);
+
+                // Redirecionamento após 2 segundos
+                const link = this.getAttribute('href'); // Pega o link correto do botão
+                setTimeout(() => {
+                    window.location.href = link; // Agora vai para o cinema.html corretamente
+                }, 2000);
+            });
+        });
+
+        // Função de digitação
+        function typeWriter(text, element, delay = 80) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, delay);
+                }
+            }
+            typing();
+        }
+
+        // Efeito de digitação para h1 e h2
+        const h1Text = document.getElementById('typing-text').textContent;
+        document.getElementById('typing-text').textContent = '';  // Limpa o texto antes de começar a digitar
+        typeWriter(h1Text, document.getElementById('typing-text'));
+
+    </script>
+</body>
+</html>
